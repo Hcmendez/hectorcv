@@ -188,11 +188,11 @@ body {
     padding: 20px;
     width: 90%;
     max-width: 800px;
-    max-height: 80vh; /* Límite de altura para habilitar scroll */
+    max-height: 80vh;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     animation: slideIn 0.3s ease-out;
-    overflow-y: auto; /* Habilitar scroll vertical */
+    overflow-y: auto;
 }
 
 @keyframes slideIn {
@@ -212,7 +212,7 @@ body {
     color: #000;
 }
 
-/* Estilos específicos para apps */
+/* App 1 - Sobre Mí */
 #modal-body.app1 {
     background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
     color: #2c3e50;
@@ -220,11 +220,40 @@ body {
     border-radius: 15px;
 }
 
+#modal-body.app1 h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#modal-body.app1 h3 {
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+    color: #34495e;
+}
+
+#modal-body.app1 ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#modal-body.app1 li {
+    margin: 10px 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+}
+
+/* App 2 - Lenguajes y Habilidades */
 #modal-body.app2 {
     background: linear-gradient(135deg, #4CAF50, #2E7D32);
     color: #fff;
     padding: 20px;
     border-radius: 15px;
+}
+
+#modal-body.app2 h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 #modal-body.app2 ul {
@@ -244,14 +273,17 @@ body {
     transform: translateX(10px);
 }
 
-/* Calculadora */
+/* App 3 - Calculadora */
+#modal-body.app3 {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 15px;
+}
+
 #calculator {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 20px;
-    background: #f5f5f5;
-    border-radius: 15px;
 }
 
 #calc-display {
@@ -287,4 +319,143 @@ body {
 
 #calc-buttons button:active {
     transform: scale(0.95);
+}
+
+/* App 4 - Galería de Proyectos */
+#modal-body.app4 {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.gallery {
+    max-width: 100%;
+}
+
+.gallery h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery p {
+    color: #666;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.gallery a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gallery a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* App 5 - Calendario */
+#modal-body.app5 {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    padding: 20px;
+    border-radius: 15px;
+    color: #5d4037;
+}
+
+#modal-body.app5 h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#modal-body.app5 ul {
+    list-style: none;
+    padding: 0;
+}
+
+#modal-body.app5 li {
+    margin: 10px 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+#modal-body.app5 button {
+    padding: 10px 20px;
+    background: #ff8f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#modal-body.app5 button:hover {
+    background: #f57c00;
+}
+
+/* App 6 - Configuración */
+#modal-body.app6 {
+    background: linear-gradient(135deg, #eceff1, #cfd8dc);
+    padding: 20px;
+    border-radius: 15px;
+    color: #37474f;
+}
+
+#modal-body.app6 h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#modal-body.app6 select, #modal-body.app6 button {
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#modal-body.app6 button:hover {
+    background: #b0bec5;
+}
+
+/* Estilo para el Zoom con botón Atras */
+.zoom-container {
+    position: relative;
+    text-align: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 16px;
+    background: #e57373;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.back-button:hover {
+    background: #ef5350;
 }
