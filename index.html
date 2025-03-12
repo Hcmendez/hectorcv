@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum de Héctor J. Méndez Novas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logosapps/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="phone">
+        <div class="notch"></div>
+        <div class="status-bar">
+            <span class="time" id="current-time"></span>
+            <span class="signal">📶</span>
+            <span class="battery">🔋 100%</span>
+        </div>
+        <div class="screen" id="screen">
+            <div class="home-indicator"></div>
+            <div class="app-grid">
+                <div class="app" data-app="1">
+                    <img src="logosapps/curriculum.png" alt="Curriculum">
+                    <span>Currículum</span>
+                </div>
+                <div class="app" data-app="2">
+                    <img src="logosapps/lenguajes.png" alt="Lenguajes">
+                    <span>Lenguajes</span>
+                </div>
+                <div class="app" data-app="3">
+                    <img src="logosapps/calculadora.png" alt="Calculadora">
+                    <span>Calculadora</span>
+                </div>
+                <div class="app" data-app="4">
+                    <img src="logosapps/imagenes.png" alt="Imágenes">
+                    <span>Imágenes</span>
+                </div>
+                <div class="app" data-app="5">
+                    <img src="logosapps/calendario.png" alt="Calendario">
+                    <span>Calendario</span>
+                </div>
+                <div class="app">
+                    <a href="https://www.instagram.com/hecmen019" target="_blank">
+                        <img src="logosapps/instagram.png" alt="Instagram">
+                        <span>Instagram</span>
+                    </a>
+                </div>
+                <div class="app">
+                    <a href="https://wa.me/18492204283" target="_blank">
+                        <img src="logosapps/whatsapp.png" alt="WhatsApp">
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+                <div class="app">
+                    <a href="https://www.tiktok.com/@hecmen019" target="_blank">
+                        <img src="logosapps/tiktok.jpg" alt="TikTok">
+                        <span>TikTok</span>
+                    </a>
+                </div>
+                <div class="app">
+                    <a href="https://github.com/Hcmendez" target="_blank">
+                        <img src="logosapps/GitHub.png" alt="GitHub">
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <div class="app">
+                    <a href="mailto:hecmendeznov@gmail.com" target="_blank">
+                        <img src="logosapps/gmail.png" alt="GMAIL">
+                        <span>GMAIL</span>
+                    </a>
+                </div>
+                <div class="app" data-app="6">
+                    <img src="logosapps/configuaracion.png" alt="Configuración">
+                    <span>Configuración</span>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="power-button" onclick="togglePower()"></div>
+            <div class="volume-up" onclick="volumeUp()"></div>
+            <div class="volume-down" onclick="volumeDown()"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <audio id="click-sound" src="sounds/click.mp3"></audio>
+    <audio id="power-on-sound" src="sounds/power-on.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

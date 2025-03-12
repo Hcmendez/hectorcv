@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('fondo/mesa.jpeg') center/cover no-repeat fixed;
+    font-family: 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.phone {
+    width: 360px;
+    height: 720px;
+    background: #000;
+    border-radius: 40px;
+    border: 10px solid #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: powerOn 1s ease-out forwards;
+    opacity: 0;
+    transform: rotateX(90deg) scale(0.9);
+}
+
+@keyframes powerOn {
+    0% {
+        opacity: 0;
+        transform: rotateX(90deg) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg) scale(1);
+    }
+}
+
+.notch {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 30px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.status-bar {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 14px;
+    z-index: 5;
+}
+
+.screen {
+    height: 100%;
+    background: url('fondo/androidrain.webp') center/cover no-repeat;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.home-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: #ccc;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 100px 10px 60px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 90px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.app:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.app img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.app span {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+    position: absolute;
+}
+
+.power-button, .volume-up, .volume-down {
+    position: absolute;
+    background: #333;
+    border: 2px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.power-button {
+    width: 6px;
+    height: 40px;
+    top: 120px;
+    right: -14px;
+}
+
+.volume-up {
+    width: 6px;
+    height: 20px;
+    top: 80px;
+    left: -14px;
+}
+
+.volume-down {
+    width: 6px;
+    height: 20px;
+    top: 110px;
+    left: -14px;
+}
+
+.power-button:hover, .volume-up:hover, .volume-down:hover {
+    background: #555;
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+}
+
+.modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh; /* Límite de altura para habilitar scroll */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.3s ease-out;
+    overflow-y: auto; /* Habilitar scroll vertical */
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    float: right;
+    font-size: 32px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Estilos específicos para apps */
+#modal-body.app1 {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #2c3e50;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#modal-body.app2 {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#modal-body.app2 ul {
+    list-style: none;
+    padding: 0;
+}
+
+#modal-body.app2 li {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+#modal-body.app2 li:hover {
+    transform: translateX(10px);
+}
+
+/* Calculadora */
+#calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+
+#calc-display {
+    width: 100%;
+    padding: 15px;
+    font-size: 2em;
+    text-align: right;
+    border: none;
+    background: #fff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+#calc-buttons button {
+    padding: 15px;
+    font-size: 1.2em;
+    border: none;
+    background: #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#calc-buttons button:hover {
+    background: #d0d0d0;
+}
+
+#calc-buttons button:active {
+    transform: scale(0.95);
+}
