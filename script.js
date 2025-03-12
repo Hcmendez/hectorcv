@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reproducir sonido y animación de encendido al cargar
     const powerOnSound = document.getElementById('power-on-sound');
     powerOnSound.play().catch(error => {
         console.log('Error al reproducir sonido de encendido:', error);
     });
 
-    // Inicializar reloj y eventos independientemente del sonido
     setInterval(() => {
         const time = new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
         document.getElementById('current-time').textContent = time;
     }, 1000);
 
-    // Asignar eventos a los íconos
     const apps = document.querySelectorAll('.app[data-app]');
     apps.forEach(app => {
         app.addEventListener('click', () => {
-            console.log(`Clic en app ${app.dataset.app}`); // Depuración
+            console.log(`Clic en app ${app.dataset.app}`);
             openApp(app.dataset.app);
         });
     });
@@ -46,7 +43,7 @@ function playSound() {
 }
 
 function openApp(appNumber) {
-    console.log(`Abriendo app ${appNumber}`); // Depuración
+    console.log(`Abriendo app ${appNumber}`);
     const modal = document.getElementById('modal');
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = '';
@@ -121,21 +118,21 @@ function openApp(appNumber) {
                     </div>
                 </div>
             `;
+            modalBody.classList.add('app3');
             break;
         case '4':
             modalBody.innerHTML = `
                 <h2>Galería de Proyectos</h2>
                 <p>Visualiza mis trabajos: <a href="https://github.com/Hcmendez" target="_blank">Ver en GitHub</a></p>
                 <div id="gallery" class="gallery">
-                    <img src="fotos/proyecto1.jpg" alt="Proyecto 1" onclick="zoomImage(this)">
-                    <img src="fotos/proyecto2.jpg" alt="Proyecto 2" onclick="zoomImage(this)">
-                    <img src="fotos/proyecto1.jpg" alt="Proyecto 3" onclick="zoomImage(this)"> <!-- Añadido para más contenido -->
-                    <img src="fotos/proyecto2.jpg" alt="Proyecto 4" onclick="zoomImage(this)"> <!-- Añadido para más contenido -->
+                    <img src="fotos/proyecto1.png" alt="Proyecto 1" onclick="zoomImage(this)">
+                    <img src="fotos/proyecto2.png" alt="Proyecto 2" onclick="zoomImage(this)">
                     <p>Descripción de proyectos: He trabajado en varias aplicaciones web y móviles, enfocándome en la usabilidad y el diseño.</p>
                     <p>Proyecto 1: Desarrollo de una página web interactiva.</p>
                     <p>Proyecto 2: Creación de un sistema de gestión con Node.js.</p>
                 </div>
             `;
+            modalBody.classList.add('app4');
             break;
         case '5':
             modalBody.innerHTML = `
@@ -148,6 +145,7 @@ function openApp(appNumber) {
                 </ul>
                 <button onclick="addEvent()">Añadir Evento</button>
             `;
+            modalBody.classList.add('app5');
             break;
         case '6':
             modalBody.innerHTML = `
@@ -158,6 +156,7 @@ function openApp(appNumber) {
                 </select></p>
                 <p>Fondo: <button onclick="changeBackground()">Cambiar</button></p>
             `;
+            modalBody.classList.add('app6');
             break;
     }
 
@@ -198,7 +197,8 @@ function calcEqual() {
 function zoomImage(img) {
     const modal = document.getElementById('modal');
     modal.innerHTML = `
-        <div class="modal-content" style="text-align: center;">
+        <div class="modal-content zoom-container">
+            <button class="back-button" onclick="closeModal()">Atrás</button>
             <span class="close" onclick="closeModal()">×</span>
             <img src="${img.src}" style="max-width: 90%; max-height: 80vh; border-radius: 10px;">
         </div>
@@ -209,9 +209,9 @@ function zoomImage(img) {
 function addEvent() {
     const event = prompt('Ingresa un evento (fecha - descripción):');
     if (event) {
-        const p = document.createElement('p');
-        p.textContent = event;
-        document.querySelector('#modal-body').appendChild(p);
+        const li = document.createElement('li');
+        li.textContent = event;
+        document.querySelector('#modal-body.app5 ul').appendChild(li);
         playSound();
     }
 }
@@ -223,7 +223,7 @@ function changeTheme(theme) {
 
 function changeBackground() {
     const backgrounds = ['fondo/androidrain.webp', 'fondo/background2.jpg', 'fondo/background3.jpg'];
-    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds)];
+    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     document.querySelector('.screen').style.backgroundImage = `url('${randomBg}')`;
     playSound();
 }
